@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-const files = ['styles.css','animations.css','choreography.css','immersive.css','accessible.css','motion.css','studio.css','concept.css'];
+const files = ['styles.css','animations.css','choreography.css','immersive.css','accessible.css','motion.css','studio.css','concept.css','poster.css'];
 const css = files.map(file => fs.readFileSync(`dist/${file}`, 'utf8')).join('\n');
 const hash = crypto.createHash('sha256').update(css).digest('hex').slice(0, 12);
 // Keep authoring files separate; serve one stylesheet in their original cascade order.

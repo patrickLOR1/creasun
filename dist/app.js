@@ -36,6 +36,12 @@ function setCampaign(key, remember = true, animate = true) {
   const data = campaigns[key] || campaigns.bebidas;
   const index = campaignOrder.indexOf(key);
   activeCampaign = key;
+  const posterPalette = {bebidas:['#e8c65e','#bb8a16','#102031','Bebidas'],hogar:['#e9996b','#bb4c30','#102031','Hogar'],textil:['#79c6c3','#168681','#102031','Textil'],navidad:['#c5394b','#8f2434','#ffffff','Navidad'],otono:['#d8955b','#8e3f22','#102031','Otoño'],primavera:['#b8dea8','#68954f','#102031','Primavera'],verano:['#f6cf4f','#dd9720','#102031','Verano'],halloween:['#6f4a8e','#ff7a18','#ffffff','Halloween']}[key];
+  hero.style.setProperty('--poster-bg',posterPalette[0]);
+  hero.style.setProperty('--poster-deep',posterPalette[1]);
+  hero.style.setProperty('--poster-ink',posterPalette[2]);
+  hero.style.setProperty('--poster-rotate',`${index % 2 ? 4 : -5}deg`);
+  document.querySelectorAll('.poster-word').forEach(word => { word.textContent = posterPalette[3]; });
   particles = [];
   hero.dataset.effect = data.effect;
   $(".season-glyph").textContent = transitionIcons[data.effect] || "✦";
@@ -266,6 +272,14 @@ if (ctx) resizeWorld();
 syncWorld();
 
 // One-time section entrances; content remains visible if scripts or motion are disabled.
+let posterScrollFrame = 0;
+window.addEventListener('scroll', () => {
+  if (posterScrollFrame || reduceMotion || !autoplay || !heroVisible) return;
+  posterScrollFrame = requestAnimationFrame(() => {
+    hero.style.setProperty('--poster-shift', `${Math.max(-160, Math.min(160, -hero.getBoundingClientRect().top * -.18))}px`);
+    posterScrollFrame = 0;
+  });
+}, {passive:true});
 const sectionObserver = new IntersectionObserver((entries) => {
   for (const entry of entries) {
     if (!entry.isIntersecting) continue;
