@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Creasunn — Universo de colecciones</title><link rel="stylesheet" href="explora.css"></head>
+<body data-world="estudio">
+<header><a class="wordmark" href="../">creasunn<span>OBJETOS CON IDENTIDAD</span></a><span class="prototype">ESTUDIO INTERACTIVO / CONCEPTO 01</span><button id="map-open">Explorar todo <span>↗</span></button></header>
+<main>
+<section class="universe" aria-label="Explorador de colecciones">
+<div class="environment" aria-hidden="true"><div class="sun"></div><div class="horizon"></div><div class="architecture"></div><div class="snow"></div></div>
+<div class="chapter"><span>UN OBJETO.</span><span>MUCHOS DESTINOS.</span></div>
+<div class="kinetic" aria-hidden="true">BEBIDAS</div>
+<div class="orbit" id="orbit" role="region" aria-label="Carrusel de colecciones. Usa las flechas o desliza." tabindex="0"><div class="ellipse" aria-hidden="true"></div></div>
+<div class="selection"><div><span class="index" id="index">01 / 04</span><h1 id="title">Para llevar contigo.</h1><p id="description">Bebidas, reuniones y días que no se detienen.</p></div><button id="details-open" class="solid">Ver colección <span>↗</span></button></div>
+<div class="arrows"><button id="previous" aria-label="Colección anterior">←</button><span>ARRASTRA PARA EXPLORAR</span><button id="next" aria-label="Colección siguiente">→</button></div>
+</section>
+<footer><div class="worlds" role="group" aria-label="Cambiar escenario"><span>ELIGE EL ENTORNO</span><button data-world="estudio" aria-pressed="true">01 Estudio</button><button data-world="verano" aria-pressed="false">02 Verano</button><button data-world="navidad" aria-pressed="false">03 Navidad</button><button data-world="noche" aria-pressed="false">04 Noche</button></div><button id="motion" aria-pressed="true">Pausar movimiento</button></footer>
+<p class="disclosure">Prototipo de navegación · Montajes conceptuales, no inventario confirmado. <a href="../">Volver al sitio actual ↗</a></p>
+</main>
+<dialog id="map"><div class="dialog-head"><span>EL UNIVERSO CREASUNN</span><button data-close aria-label="Cerrar mapa">✕</button></div><h2>Encuentra tu<br><em>siguiente idea.</em></h2><div class="map-grid" id="map-grid"></div><p>Elige una colección para regresar a la órbita.</p></dialog>
+<dialog id="details"><div class="dialog-head"><span>SELECCIÓN CONCEPTUAL</span><button data-close aria-label="Cerrar colección">✕</button></div><img id="detail-image" alt="" width="480" height="480"><span class="index">PRODUCTOS / PERSONALIZACIÓN / IDEAS</span><h2 id="detail-title"></h2><p id="detail-copy"></p><a class="solid" href="../#cotizador">Armar mi propuesta ↗</a><a class="catalog-link" href="../#catalogos">Consultar catálogos reales →</a><small>Disponibilidad, materiales y técnicas se confirman al cotizar.</small></dialog>
+<p id="announcement" class="sr-only" aria-live="polite"></p><script src="explora.js"></script></body></html>
