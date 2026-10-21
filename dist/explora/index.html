@@ -1,14 +1,34 @@
 <!doctype html>
-<html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Creasunn — Universo de colecciones</title><link rel="stylesheet" href="explora.css"></head>
+<html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Creasunn — Un objeto. Muchas historias.</title><link rel="stylesheet" href="explora.css"><link rel="stylesheet" href="story.css?v=3"></head>
 <body data-world="estudio">
-<header><a class="wordmark" href="../">creasunn<span>OBJETOS CON IDENTIDAD</span></a><span class="prototype">ESTUDIO INTERACTIVO / CONCEPTO 01</span><button id="map-open">Explorar todo <span>↗</span></button></header>
+<header class="story-header"><a class="wordmark" href="../">creasunn<span>OBJETOS CON IDENTIDAD</span></a><span class="prototype">UN OBJETO / MUCHAS HISTORIAS</span><div class="header-actions"><button id="story-motion" aria-pressed="true">Pausar movimiento</button><a href="#collections" class="skip-story">Saltar historia ↗</a><button id="map-open">Mapa <span>↗</span></button></div></header>
 <main>
-<section class="universe" aria-label="Explorador de colecciones">
+<section class="story" id="story" aria-label="La historia de un objeto">
+<div class="story-stage" data-chapter="0" data-place="office">
+<div class="stage-controls"><button id="stage-motion" aria-pressed="true">Pausar movimiento</button><a href="#collections">Ir a colecciones ↗</a></div>
+<div class="story-light" aria-hidden="true"></div>
+<div class="story-location location-office" aria-hidden="true"></div><div class="story-location location-coast" aria-hidden="true"></div>
+<div class="story-shade" aria-hidden="true"></div><div class="story-window" aria-hidden="true"></div>
+<div class="story-type" aria-hidden="true">IMAGINA.</div>
+<div class="story-object" aria-label="Visualización conceptual de un termo personalizable"><div class="contact-shadow" aria-hidden="true"></div><div class="vessel"><img src="assets/vessel-960.webp" srcset="assets/vessel-480.webp 480w, assets/vessel-960.webp 960w" sizes="(max-width:700px) 290px, 550px" width="960" height="960" alt="Termo color marfil, visualización conceptual" fetchpriority="high"><span id="vessel-brand" aria-hidden="true">tu marca</span><div class="engraving-light" aria-hidden="true"></div></div><div class="gift-box" aria-hidden="true"><div class="box-front"><span>PARA LO QUE VIENE.</span></div><div class="box-lid"><span>creasunn</span><i></i></div></div></div>
+<div class="foreground" aria-hidden="true"><div class="paper-edge"></div><div class="ribbon"></div></div>
+<div class="story-copy">
+<article data-story-copy="0"><span class="story-eyebrow">01 / EL COMIENZO</span><h1>Un objeto.<br><em>Muchas historias.</em></h1><p>Antes de llevar una marca,<br>lleva una intención.</p><button class="story-action" data-goto="1">Dale una identidad <span>↓</span></button></article>
+<article data-story-copy="1" hidden><span class="story-eyebrow">02 / TU IDENTIDAD</span><h2>Ahora,<br><em>hazlo tuyo.</em></h2><p>Una palabra transforma un objeto<br>en algo que te representa.</p><form id="brand-form"><label for="brand-name">Prueba con el nombre de tu marca</label><div class="brand-field"><input id="brand-name" maxlength="18" placeholder="Tu marca" autocomplete="off"><button type="submit">Aplicar ↗</button></div></form><small>Vista ilustrativa, no prueba de impresión.</small><button class="story-action" data-goto="2">Preparar el detalle <span>↓</span></button></article>
+<article data-story-copy="2" hidden><span class="story-eyebrow">03 / EL ENCUENTRO</span><h2>Lo entregas<br><em>una vez.</em></h2><p>El primer momento importa.<br>Lo que viene después, también.</p><button id="gift-toggle" class="story-action" aria-expanded="false">Abrir el regalo <span>↗</span></button><button class="story-next" data-goto="3">Seguir su historia →</button></article>
+<article data-story-copy="3" hidden><span class="story-eyebrow">04 / LA VIDA REAL</span><h2>Pero acompaña<br><em>muchos días.</em></h2><p id="place-caption">La primera idea de la mañana.<br>Una pausa entre proyectos.</p><div class="place-controls" role="group" aria-label="Lugar de la historia"><button data-place="office" aria-pressed="true">09:00 · Oficina</button><button data-place="coast" aria-pressed="false">18:00 · Frente al mar</button></div><button class="story-action" data-goto="4">¿Y tu próxima historia? <span>↓</span></button></article>
+<article data-story-copy="4" hidden><span class="story-eyebrow">05 / LO QUE SIGUE</span><h2>Tu marca.<br><em>En su historia.</em></h2><p>No se trata solo de entregar algo.<br>Se trata de ser parte de lo que viene.</p><a class="story-action" href="#collections">Elegir mi colección <span>↗</span></a><a class="story-next" href="../#cotizador">Ya tengo una idea: cotizar →</a></article>
+</div>
+<nav class="story-chapters" aria-label="Capítulos de la historia"><button data-goto="0" aria-current="step"><b>01</b><span>La idea</span></button><button data-goto="1"><b>02</b><span>Identidad</span></button><button data-goto="2"><b>03</b><span>El regalo</span></button><button data-goto="3"><b>04</b><span>Vida real</span></button><button data-goto="4"><b>05</b><span>Tu historia</span></button></nav>
+<div class="story-bottom"><span>DESLIZA PARA CONTINUAR <i>↓</i></span><span>ESCENAS CONCEPTUALES / CREASUNN</span></div><div class="story-progress" aria-hidden="true"><span></span></div>
+</div></section>
+<noscript><p class="no-script">Activa JavaScript para explorar la historia interactiva, o <a href="../#catalogos">consulta los catálogos</a>.</p><style>.story{height:auto}.story-stage{min-height:800px}.story-chapters,.story-copy button{display:none}</style></noscript>
+<section class="universe" id="collections" aria-label="Explorador de colecciones" tabindex="-1">
 <div class="environment" aria-hidden="true"><div class="sun"></div><div class="horizon"></div><div class="architecture"></div><div class="snow"></div></div>
 <div class="chapter"><span>UN OBJETO.</span><span>MUCHOS DESTINOS.</span></div>
 <div class="kinetic" aria-hidden="true">BEBIDAS</div>
 <div class="orbit" id="orbit" role="region" aria-label="Carrusel de colecciones. Usa las flechas o desliza." tabindex="0"><div class="ellipse" aria-hidden="true"></div></div>
-<div class="selection"><div><span class="index" id="index">01 / 04</span><h1 id="title">Para llevar contigo.</h1><p id="description">Bebidas, reuniones y días que no se detienen.</p></div><button id="details-open" class="solid">Ver colección <span>↗</span></button></div>
+<div class="selection"><div><span class="index" id="index">01 / 04</span><h2 id="title">Para llevar contigo.</h2><p id="description">Bebidas, reuniones y días que no se detienen.</p></div><button id="details-open" class="solid">Ver colección <span>↗</span></button></div>
 <div class="arrows"><button id="previous" aria-label="Colección anterior">←</button><span>ARRASTRA PARA EXPLORAR</span><button id="next" aria-label="Colección siguiente">→</button></div>
 </section>
 <footer><div class="worlds" role="group" aria-label="Cambiar escenario"><span>ELIGE EL ENTORNO</span><button data-world="estudio" aria-pressed="true">01 Estudio</button><button data-world="verano" aria-pressed="false">02 Verano</button><button data-world="navidad" aria-pressed="false">03 Navidad</button><button data-world="noche" aria-pressed="false">04 Noche</button></div><button id="motion" aria-pressed="true">Pausar movimiento</button></footer>
@@ -16,4 +36,4 @@
 </main>
 <dialog id="map"><div class="dialog-head"><span>EL UNIVERSO CREASUNN</span><button data-close aria-label="Cerrar mapa">✕</button></div><h2>Encuentra tu<br><em>siguiente idea.</em></h2><div class="map-grid" id="map-grid"></div><p>Elige una colección para regresar a la órbita.</p></dialog>
 <dialog id="details"><div class="dialog-head"><span>SELECCIÓN CONCEPTUAL</span><button data-close aria-label="Cerrar colección">✕</button></div><img id="detail-image" alt="" width="480" height="480"><span class="index">PRODUCTOS / PERSONALIZACIÓN / IDEAS</span><h2 id="detail-title"></h2><p id="detail-copy"></p><a class="solid" href="../#cotizador">Armar mi propuesta ↗</a><a class="catalog-link" href="../#catalogos">Consultar catálogos reales →</a><small>Disponibilidad, materiales y técnicas se confirman al cotizar.</small></dialog>
-<p id="announcement" class="sr-only" aria-live="polite"></p><script src="explora.js"></script></body></html>
+<p id="announcement" class="sr-only" aria-live="polite"></p><script src="explora.js"></script><script src="story.js?v=2"></script></body></html>
