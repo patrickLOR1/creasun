@@ -46,7 +46,7 @@
   }
   document.querySelectorAll('button[data-intent]').forEach(b=>b.addEventListener('click',()=>{
     intent=b.dataset.intent;selected=new Set(intents[intent].pieces);
-    document.querySelector('.worlds button[data-world="'+intents[intent].world+'"]').click();sync();
+    if(!document.body.dataset.seasonChosen) document.querySelector('.worlds button[data-world="'+intents[intent].world+'"]').click();sync();
   }));
   document.querySelectorAll('[data-pick],[data-piece]').forEach(b=>b.addEventListener('click',()=>toggle(b.dataset.pick||b.dataset.piece)));
   document.querySelector('#brand-form').addEventListener('submit',()=>{brand=document.querySelector('#brand-name').value.trim();sync();});
