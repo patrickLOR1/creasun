@@ -19,6 +19,15 @@
     document.querySelector('[data-campaign-heading]').textContent=(brand||'Tu marca')+' / '+data.label;
     document.querySelectorAll('[data-brand-label]').forEach(el=>el.textContent=brand||'tu marca');
     document.querySelector('#trail-brand').textContent=brand||'Tu marca';
+    document.querySelector('#map-brand').textContent=brand||'Tu marca';
+    document.querySelector('#map-count').textContent=selected.size+' colecciones conectadas';
+    document.querySelectorAll('[data-node]').forEach(node=>{
+      const included=selected.has(node.dataset.node);
+      node.classList.toggle('included',included);
+      node.querySelector('[data-node-status]').textContent=included?'Incluida en tu campaña':'Incluir colección';
+      node.querySelector('.node-check').textContent=included?'✓':'+';
+    });
+    document.querySelectorAll('[data-line]').forEach(line=>line.classList.toggle('connected',selected.has(line.dataset.line)));
     document.querySelector('#trail-intent').textContent=data.label+' · '+selected.size+' colecciones';
     document.querySelector('#campaign-intent').value=data.label;
     document.querySelector('#campaign-products').value=list.join(', ');
@@ -48,8 +57,7 @@
   form.querySelectorAll('input[name=product]').forEach(r=>r.addEventListener('change',()=>{selected.add(r.dataset.scene);sync();}));
   document.querySelectorAll('#details a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{
     if(link.getAttribute('href')==='#cotizador'){
-      const src=document.querySelector('.object[aria-pressed="true"] img').getAttribute('src');
-      const scene=src.match(/scene-(\w+)-/)[1];selected.add(scene);
+      const scene=document.querySelector('#details').dataset.scene;selected.add(scene);
       form.querySelector('input[data-scene="'+scene+'"]').checked=true;sync();
     }
     document.querySelector('#details').close();
