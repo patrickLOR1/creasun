@@ -7,6 +7,12 @@
   const still=()=>document.body.classList.contains('paused')||matchMedia('(prefers-reduced-motion: reduce)').matches;
   function setChapter(i){
     if(i===current)return;current=i;stage.dataset.chapter=String(i);
+    if(document.querySelector('.journey-world')){
+      const scenes=[['08:00','EL ESTUDIO / DONDE NACE LA IDEA'],['09:00','LA OFICINA / UNA IDENTIDAD COMPARTIDA'],['17:00','LA TERRAZA / UN MOMENTO PARA CONECTAR'],['19:00','LA CELEBRACIÓN / ALGO PARA RECORDAR'],['MAÑANA','LA MESA / TU PRÓXIMA CAMPAÑA']];
+      document.querySelector('#scene-time').textContent=scenes[i][0];
+      document.querySelector('#scene-name').textContent=scenes[i][1];
+      if(i===3){place='coast';stage.dataset.place=place;story.querySelectorAll('button[data-place]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.place===place)));document.querySelector('#place-caption').innerHTML='Personas que se encuentran.<br>Detalles que guardan ese momento.';}
+    }
     panels.forEach((panel,n)=>{panel.hidden=n!==i;panel.classList.toggle('reveal',n===i&&!still());});
     story.querySelectorAll('.story-chapters button').forEach((b,n)=>{if(n===i)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
     const type=stage.querySelector('.story-type');type.textContent=words[i];type.classList.remove('word-enter');
@@ -41,6 +47,10 @@
   document.querySelector('#gift-toggle').addEventListener('click',e=>{const open=stage.classList.toggle('gift-open');const b=e.currentTarget;b.setAttribute('aria-expanded',String(open));b.innerHTML=open?'Cerrar el regalo <span>↘</span>':'Abrir el regalo <span>↗</span>';});
   story.querySelectorAll('button[data-place]').forEach(b=>b.addEventListener('click',()=>{place=b.dataset.place;stage.dataset.place=place;story.querySelectorAll('button[data-place]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.querySelector('#place-caption').innerHTML=place==='office'?'La primera idea de la mañana.<br>Una pausa entre proyectos.':'El último pendiente puede esperar.<br>Hay momentos para llevar contigo.';}));
   let pointerFrame=0,px=0,py=0;
+  if(document.querySelector('.journey-world')) story.querySelectorAll('button[data-place]').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelector('#scene-time').textContent=b.dataset.place==='office'?'09:00':'19:00';
+    document.querySelector('#scene-name').textContent=b.dataset.place==='office'?'LA OFICINA / UNA IDENTIDAD COMPARTIDA':'LA CELEBRACIÓN / ALGO PARA RECORDAR';
+  }));
   stage.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse'||still()||innerWidth<=700||!visible)return;px=(e.clientX/innerWidth-.5)*14;py=(e.clientY/innerHeight-.5)*8;if(!pointerFrame)pointerFrame=requestAnimationFrame(()=>{stage.style.setProperty('--pointer-x',`${px}px`);stage.style.setProperty('--pointer-y',`${py}px`);pointerFrame=0;});});
   stage.addEventListener('pointerleave',()=>{stage.style.setProperty('--pointer-x','0px');stage.style.setProperty('--pointer-y','0px');});
   function syncMotion(){const pause=document.body.classList.contains('paused');document.querySelectorAll('#story-motion,#stage-motion').forEach(b=>{b.textContent=pause?'Activar movimiento':'Pausar movimiento';b.setAttribute('aria-pressed',String(!pause));});schedule();}
