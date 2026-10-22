@@ -23,11 +23,12 @@
     const rect=story.getBoundingClientRect(),range=Math.max(1,story.offsetHeight-stage.offsetHeight);
     // Pin the complete layer stack explicitly, including absolute descendants.
     // This avoids clipping when a mobile browser jumps to a chapter mid-scroll.
-    const pinned=rect.top<=0&&rect.bottom>=stage.offsetHeight;
+    const headerOffset=document.body.classList.contains('landing')?document.querySelector('.story-header').offsetHeight:0;
+    const pinned=rect.top<=headerOffset&&rect.bottom>=stage.offsetHeight+headerOffset;
     stage.style.position=pinned?'fixed':'absolute';
-    stage.style.top=pinned?'0px':`${rect.top>0?0:range}px`;
+    stage.style.top=pinned?headerOffset+'px':`${rect.top>headerOffset?0:range}px`;
     stage.style.left='0px';stage.style.width='100%';
-    const progress=clamp(-rect.top/range),position=progress*5;
+    const progress=clamp((headerOffset-rect.top)/range),position=progress*5;
     const chapter=Math.min(4,Math.floor(position)),local=clamp(position-chapter);
     setChapter(chapter);stage.style.setProperty('--progress',progress);
     const mobile=innerWidth<=700;
@@ -41,7 +42,7 @@
     if(still()){stage.style.setProperty('--pointer-x','0px');stage.style.setProperty('--pointer-y','0px');}
   }
   function schedule(){if(!frame)frame=requestAnimationFrame(render);}
-  function go(i){const range=Math.max(1,story.offsetHeight-stage.offsetHeight),top=scrollY+story.getBoundingClientRect().top+range*(i+.12)/5;window.scrollTo({top,behavior:still()?'instant':'smooth'});}
+  function go(i){const offset=document.body.classList.contains('landing')?document.querySelector('.story-header').offsetHeight:0;const range=Math.max(1,story.offsetHeight-stage.offsetHeight),top=scrollY+story.getBoundingClientRect().top-offset+range*(i+.12)/5;window.scrollTo({top,behavior:still()?'instant':'smooth'});}
   story.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.goto))));
   document.querySelector('#brand-form').addEventListener('submit',e=>{e.preventDefault();const text=document.querySelector('#brand-name').value.trim()||'tu marca';document.querySelector('#vessel-brand').textContent=text;stage.classList.remove('branding');void stage.offsetWidth;stage.classList.add('branding');clearTimeout(brandTimer);brandTimer=setTimeout(()=>stage.classList.remove('branding'),1100);document.querySelector('#announcement').textContent=`Vista conceptual actualizada: ${text}`;});
   document.querySelector('#gift-toggle').addEventListener('click',e=>{const open=stage.classList.toggle('gift-open');const b=e.currentTarget;b.setAttribute('aria-expanded',String(open));b.innerHTML=open?'Cerrar el regalo <span>↘</span>':'Abrir el regalo <span>↗</span>';});
