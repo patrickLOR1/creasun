@@ -40,7 +40,11 @@
     const s = selection();
     const message = `Hola, quisiera cotizar ${s.quantity} piezas de ${s.product.value.toLowerCase()}.\nMarca: ${s.brand || 'Por definir'}.\nPersonalización: ${s.technique}.\nFecha requerida: ${s.date || 'Por definir'}.\nVi el montaje conceptual de Creasunn; quisiera confirmar productos disponibles, técnica, mínimo de compra y precio.`;
     document.querySelector('#quote-summary').textContent = `${s.product.value} · ${s.quantity} piezas · ${s.brand || 'Marca por definir'} · ${s.technique}${s.date ? ' · ' + s.date : ''}`;
-    document.querySelector('#quote-send').href = 'https://wa.me/524424469598?text=' + encodeURIComponent(message);
+    const intent = document.querySelector('#campaign-intent')?.value;
+    const collections = document.querySelector('#campaign-products')?.value;
+    const context = intent ? `Intención: ${intent}.\nColecciones de interés: ${collections}.\nCantidad orientativa para la colección principal; confirmar distribución entre colecciones.\n` : '';
+    if (intent) document.querySelector('#quote-summary').textContent = `${intent} · ${collections} · Colección principal: ` + document.querySelector('#quote-summary').textContent;
+    document.querySelector('#quote-send').href = 'https://wa.me/524424469598?text=' + encodeURIComponent(context + message);
     form.hidden = true; result.hidden = false;
     markers.forEach(marker=>marker.removeAttribute('aria-current'));
     result.focus();
