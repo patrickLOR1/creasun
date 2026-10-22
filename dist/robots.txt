@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://creasunn-promocionales-dinamico.jovial-wand-3464.chatgpt.site/sitemap.xml
+Sitemap: https://creasun-beta.vercel.app/sitemap.xml
